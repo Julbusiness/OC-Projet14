@@ -1,4 +1,9 @@
 import logo from "../assets/logo.jpg";
+import CustomDatePicker from "../components/DatePicker/DatePicker";
+import SelectMenu from "../components/SelectMenu/SelectMenu";
+import { state } from "../../public/data.js";
+import { department } from "../../public/data.js";
+import { Link } from "react-router-dom";
 
 function AddEmployee() {
 	return (
@@ -10,8 +15,11 @@ function AddEmployee() {
 				</div>
 				<div className="body-form">
 					<h4 className="title-body-form">
-						Create new Employee<span>.</span>
+						Create New Employee<span>.</span>
 					</h4>
+					<Link className="links" to="/employees">
+						View Current Employees
+					</Link>
 					<form className="form-input">
 						<div className="input-wrapper">
 							<label htmlFor="firstname"></label>
@@ -32,22 +40,10 @@ function AddEmployee() {
 							/>
 						</div>
 						<div className="input-wrapper">
-							<label htmlFor="birth"></label>
-							<input
-								type="text"
-								id="birth"
-								name="birth"
-								placeholder="Date of Birth"
-							/>
+							<CustomDatePicker placeholderText="Date of birth" />
 						</div>
 						<div className="input-wrapper">
-							<label htmlFor="start"></label>
-							<input
-								type="text"
-								id="start"
-								name="start"
-								placeholder="Start Date"
-							/>
+							<CustomDatePicker placeholderText="Start date" />
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="street"></label>
@@ -63,21 +59,14 @@ function AddEmployee() {
 							<input type="text" id="city" name="city" placeholder="City" />
 						</div>
 						<div className="input-wrapper">
-							<label htmlFor="state"></label>
-							<input type="text" id="state" name="state" placeholder="State" />
+							<SelectMenu placeholder="State" options={state} />
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="zip"></label>
 							<input type="text" id="zip" name="zip" placeholder="Zip Code" />
 						</div>
 						<div className="input-wrapper">
-							<label htmlFor="department"></label>
-							<input
-								type="text"
-								id="department"
-								name="department"
-								placeholder="Department"
-							/>
+							<SelectMenu placeholder="Department" options={department} />
 						</div>
 						<div className="btn-wrapper">
 							<button className="btn">Create</button>
