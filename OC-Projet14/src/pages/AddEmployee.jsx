@@ -28,6 +28,7 @@ function AddEmployee() {
 								id="firstname"
 								name="firstname"
 								placeholder="First name"
+								className="input"
 							/>
 						</div>
 						<div className="input-wrapper">
@@ -37,6 +38,7 @@ function AddEmployee() {
 								id="lastname"
 								name="lastname"
 								placeholder="Last name"
+								className="input"
 							/>
 						</div>
 						<div className="input-wrapper">
@@ -52,20 +54,33 @@ function AddEmployee() {
 								id="street"
 								name="street"
 								placeholder="Street"
+								className="input"
 							/>
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="city"></label>
-							<input type="text" id="city" name="city" placeholder="City" />
+							<input
+								type="text"
+								id="city"
+								name="city"
+								placeholder="City"
+								className="input"
+							/>
 						</div>
-						<div className="input-wrapper">
+						<div className="input-wrapper state">
 							<SelectMenu placeholder="State" options={state} />
 						</div>
 						<div className="input-wrapper">
 							<label htmlFor="zip"></label>
-							<input type="text" id="zip" name="zip" placeholder="Zip Code" />
+							<input
+								type="text"
+								id="zip"
+								name="zip"
+								placeholder="Zip Code"
+								className="input"
+							/>
 						</div>
-						<div className="input-wrapper">
+						<div className="input-wrapper department">
 							<SelectMenu placeholder="Department" options={department} />
 						</div>
 						<div className="btn-wrapper">
