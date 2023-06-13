@@ -1,11 +1,51 @@
 import logo from "../assets/logo.jpg";
 import CustomDatePicker from "../components/DatePicker/DatePicker";
 import SelectMenu from "../components/SelectMenu/SelectMenu";
-import { state } from "../../public/data.js";
-import { department } from "../../public/data.js";
+import { state } from "../data/data.js";
+import { department } from "../data/data.js";
 import { Link } from "react-router-dom";
 
+export const data = []
+
 function AddEmployee() {
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const form = e.target
+		const elements = form.elements
+
+		const firstname = elements.firstname.value
+		const lastname = elements.lastname.value
+		const dateOfBirth = elements[2].value
+		const startdate = elements[3].value
+		const street = elements.street.value
+		const city = elements.city.value
+		const state = elements.select[0].value
+		const zip = elements.zip.value
+		const department = elements.select[1].value
+
+
+		const employee = {
+			firstname,
+			lastname,
+			dateOfBirth,
+			startdate,
+			street,
+			city,
+			state,
+			zip,
+			department
+		}
+
+		console.log(employee)
+
+		data.push(employee)
+		console.log(data)
+
+		form.reset()
+	}
+
 	return (
 		<div className="form">
 			<div className="form-society">
@@ -20,7 +60,7 @@ function AddEmployee() {
 					<Link className="links" to="/employees">
 						View Current Employees
 					</Link>
-					<form className="form-input">
+					<form className="form-input" onSubmit={handleSubmit}>
 						<div className="input-wrapper">
 							<label htmlFor="firstname"></label>
 							<input

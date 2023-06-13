@@ -5,13 +5,14 @@ import {
 	useGlobalFilter,
 	usePagination,
 } from "react-table";
-import MOCK_DATA from "../../../public/MOCK_DATA.json";
+import MOCK_DATA from "../../data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { GlobalFilter } from "./GlobalFilter";
+import { data } from "../../pages/AddEmployee";
 
 export const Table = () => {
 	const columns = useMemo(() => COLUMNS, []);
-	const data = useMemo(() => MOCK_DATA, []);
+	// const data = useMemo(() => MOCK_DATA, []);
 
 	const {
 		getTableProps,

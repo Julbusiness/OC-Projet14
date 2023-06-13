@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Select from 'react-select';
 
 
@@ -42,7 +41,7 @@ function SelectMenu(props) {
   return (
     <div className="select-style">
       <Select
-        name="basic-single"
+        name="select"
         placeholder={props.placeholder}
         options={props.options}
         onChange={handleChange}
