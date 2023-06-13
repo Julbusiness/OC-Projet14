@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import {
 	useTable,
 	useSortBy,
@@ -8,11 +8,19 @@ import {
 import MOCK_DATA from "../../data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { GlobalFilter } from "./GlobalFilter";
-import { data } from "../../pages/AddEmployee";
 
 export const Table = () => {
 	const columns = useMemo(() => COLUMNS, []);
 	// const data = useMemo(() => MOCK_DATA, []);
+
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		const data = JSON.parse(localStorage.getItem("items"));
+		if (data) {
+			setData(data);
+		}
+	}, []);
 
 	const {
 		getTableProps,

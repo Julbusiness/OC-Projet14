@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import logo from "../assets/logo.jpg";
 import CustomDatePicker from "../components/DatePicker/DatePicker";
 import SelectMenu from "../components/SelectMenu/SelectMenu";
@@ -5,9 +6,14 @@ import { state } from "../data/data.js";
 import { department } from "../data/data.js";
 import { Link } from "react-router-dom";
 
-export const data = []
-
 function AddEmployee() {
+
+	const [items, setItems] = useState([])
+
+	useEffect(() => {
+		localStorage.setItem('items', JSON.stringify(items))
+	}, [items])
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -38,12 +44,9 @@ function AddEmployee() {
 			department
 		}
 
-		console.log(employee)
+		setItems([employee])
 
-		data.push(employee)
-		console.log(data)
-
-		form.reset()
+		// form.reset()
 	}
 
 	return (
