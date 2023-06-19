@@ -1,6 +1,10 @@
 import Select from 'react-select';
 
-
+/**
+ * This function displays a drop-down menu with choices.
+ * @param {string} props 
+ * @returns JSX element
+ */
 function SelectMenu(props) {
 
   const styles = {

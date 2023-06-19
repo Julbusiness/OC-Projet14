@@ -9,6 +9,10 @@ import {
 import { COLUMNS } from "./columns";
 import { GlobalFilter } from "./GlobalFilter";
 
+/**
+ * This function displays the table of all employees.
+ * @returns JSX element
+ */
 export const Table = () => {
 	const columns = useMemo(() => COLUMNS, []);
 	// const data = useMemo(() => MOCK_DATA, []);

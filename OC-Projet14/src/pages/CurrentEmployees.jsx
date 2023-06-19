@@ -3,8 +3,8 @@ import { Table } from "../components/Table/Table";
 
 
 /**
- * Show the current employees
- * @returns JSX object // Table
+ * This function displays all employees in a table.
+ * @returns JSX element
  */
 function CurrentEmployees() {
 	return (

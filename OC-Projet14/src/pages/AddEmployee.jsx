@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import Modal from "modal-react-component-vitejs";
 
 /**
- * AddEmployee component
- * @returns JSX object
+ * This function adds an employee to the table.
+ * @returns JSX element
  */
 function AddEmployee() {
 

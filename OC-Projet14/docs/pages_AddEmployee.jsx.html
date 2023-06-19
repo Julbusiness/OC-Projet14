@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/AddEmployee.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/AddEmployee.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from "react";
+import logo from "../assets/logo.jpg";
+import CustomDatePicker from "../components/DatePicker/DatePicker";
+import SelectMenu from "../components/SelectMenu/SelectMenu";
+import { state } from "../data/data.js";
+import { department } from "../data/data.js";
+import { Link } from "react-router-dom";
+import Modal from "modal-react-component-vitejs";
+
+/**
+ * This function adds an employee to the table.
+ * @returns JSX element
+ */
+function AddEmployee() {
+
+	const [items, setItems] = useState([])
+	const [show, setShow] = useState(false);
+
+	const saveEmployee = (item) => {
+		const employee = JSON.parse(localStorage.getItem("items")) || []
+		employee.push(item)
+		localStorage.setItem("items", JSON.stringify(employee))
+	}
+
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const form = e.target
+		const elements = form.elements
+
+		const firstname = elements.firstname.value
+		const lastname = elements.lastname.value
+		const dateOfBirth = elements[2].value
+		const startdate = elements[3].value
+		const street = elements.street.value
+		const city = elements.city.value
+		const state = elements.select[0].value
+		const zip = elements.zip.value
+		const department = elements.select[1].value
+
+
+		const employee = {
+			firstname,
+			lastname,
+			dateOfBirth,
+			startdate,
+			street,
+			city,
+			state,
+			zip,
+			department
+		}
+
+		setItems([employee])
+
+		saveEmployee(employee)
+
+		form.reset()
+	}
+
+	return (
+		&lt;div className="form">
+			&lt;div className="form-society">
+				&lt;div className="header">
+					&lt;div className="img-logo">&lt;/div>
+					&lt;div className="title-logo">HRnet&lt;/div>
+				&lt;/div>
+				&lt;div className="body-form">
+					&lt;h4 className="title-body-form">
+						Create New Employee&lt;span>.&lt;/span>
+					&lt;/h4>
+					&lt;Link className="links" to="/employees">
+						View Current Employees
+					&lt;/Link>
+					&lt;form className="form-input" onSubmit={handleSubmit}>
+						&lt;div className="input-wrapper">
+							&lt;label htmlFor="firstname">&lt;/label>
+							&lt;input
+								type="text"
+								id="firstname"
+								name="firstname"
+								placeholder="First name"
+								className="input"
+							/>
+						&lt;/div>
+						&lt;div className="input-wrapper">
+							&lt;label htmlFor="lastname">&lt;/label>
+							&lt;input
+								type="text"
+								id="lastname"
+								name="lastname"
+								placeholder="Last name"
+								className="input"
+							/>
+						&lt;/div>
+						&lt;div className="input-wrapper">
+							&lt;CustomDatePicker placeholderText="Date of birth" />
+						&lt;/div>
+						&lt;div className="input-wrapper">
+							&lt;CustomDatePicker placeholderText="Start date" />
+						&lt;/div>
+						&lt;div className="input-wrapper">
+							&lt;label htmlFor="street">&lt;/label>
+							&lt;input
+								type="text"
+								id="street"
+								name="street"
+								placeholder="Street"
+								className="input"
+							/>
+						&lt;/div>
+						&lt;div className="input-wrapper">
+							&lt;label htmlFor="city">&lt;/label>
+							&lt;input
+								type="text"
+								id="city"
+								name="city"
+								placeholder="City"
+								className="input"
+							/>
+						&lt;/div>
+						&lt;div className="input-wrapper state">
+							&lt;SelectMenu placeholder="State" options={state} />
+						&lt;/div>
+						&lt;div className="input-wrapper">
+							&lt;label htmlFor="zip">&lt;/label>
+							&lt;input
+								type="text"
+								id="zip"
+								name="zip"
+								placeholder="Zip Code"
+								className="input"
+							/>
+						&lt;/div>
+						&lt;div className="input-wrapper department">
+							&lt;SelectMenu placeholder="Department" options={department} />
+						&lt;/div>
+						&lt;div className="btn-wrapper">
+							&lt;button className="btn" onClick={() => setShow(true)}>Create&lt;/button>
+							&lt;Modal onClose={() => setShow(false)} show={show}>
+      					&lt;p>Employee Created !&lt;/p>
+      				&lt;/Modal>
+						&lt;/div>
+					&lt;/form>
+				&lt;/div>
+			&lt;/div>
+			&lt;div className="img-society">
+				&lt;img src={logo} alt="logo-society" className="logo" />
+			&lt;/div>
+		&lt;/div>
+	);
+}
+
+export default AddEmployee;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddEmployee">AddEmployee</a></li><li><a href="global.html#CurrentEmployees">CurrentEmployees</a></li><li><a href="global.html#CustomDatePicker">CustomDatePicker</a></li><li><a href="global.html#GlobalFilter">GlobalFilter</a></li><li><a href="global.html#SelectMenu">SelectMenu</a></li><li><a href="global.html#Table">Table</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 19 2023 09:59:32 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

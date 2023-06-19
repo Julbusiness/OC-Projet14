@@ -3,6 +3,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 
+/**
+ * This function displays a calendar with the following dates
+ * @param {string} props 
+ * @returns JSX element
+ */
 function CustomDatePicker(props) {
 	const [selectedDate, setSelectedDate] = useState(null);
 	const placeholderText = props.placeholderText;

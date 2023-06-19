@@ -1,3 +1,8 @@
+/**
+ * This function is used to manage the displayboard filter system.
+ * @param {string} param0 
+ * @returns 
+ */
 export const GlobalFilter = ({ filter, setFilter }) => {
 
   return (
