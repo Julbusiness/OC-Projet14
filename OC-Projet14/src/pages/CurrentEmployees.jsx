@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { Table } from "../components/Table/Table";
 
+
+/**
+ * Show the current employees
+ * @returns JSX object // Table
+ */
 function CurrentEmployees() {
 	return (
 		<div className="container-table">

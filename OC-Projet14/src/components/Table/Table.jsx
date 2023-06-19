@@ -5,7 +5,7 @@ import {
 	useGlobalFilter,
 	usePagination,
 } from "react-table";
-import MOCK_DATA from "../../data/MOCK_DATA.json";
+// import MOCK_DATA from "../../data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { GlobalFilter } from "./GlobalFilter";
 

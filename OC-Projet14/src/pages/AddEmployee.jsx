@@ -1,18 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import logo from "../assets/logo.jpg";
 import CustomDatePicker from "../components/DatePicker/DatePicker";
 import SelectMenu from "../components/SelectMenu/SelectMenu";
 import { state } from "../data/data.js";
 import { department } from "../data/data.js";
 import { Link } from "react-router-dom";
+import Modal from "modal-react-component-vitejs";
 
+/**
+ * AddEmployee component
+ * @returns JSX object
+ */
 function AddEmployee() {
 
 	const [items, setItems] = useState([])
+	const [show, setShow] = useState(false);
 
-	useEffect(() => {
-		localStorage.setItem('items', JSON.stringify(items))
-	}, [items])
+	const saveEmployee = (item) => {
+		const employee = JSON.parse(localStorage.getItem("items")) || []
+		employee.push(item)
+		localStorage.setItem("items", JSON.stringify(employee))
+	}
 
 
 	const handleSubmit = (e) => {
@@ -46,7 +54,9 @@ function AddEmployee() {
 
 		setItems([employee])
 
-		// form.reset()
+		saveEmployee(employee)
+
+		form.reset()
 	}
 
 	return (
@@ -127,7 +137,10 @@ function AddEmployee() {
 							<SelectMenu placeholder="Department" options={department} />
 						</div>
 						<div className="btn-wrapper">
-							<button className="btn">Create</button>
+							<button className="btn" onClick={() => setShow(true)}>Create</button>
+							<Modal onClose={() => setShow(false)} show={show}>
+      					<p>Employee Created !</p>
+      				</Modal>
 						</div>
 					</form>
 				</div>

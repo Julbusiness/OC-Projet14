@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker-cssmodules.css";
 function CustomDatePicker(props) {
 	const [selectedDate, setSelectedDate] = useState(null);
 	const placeholderText = props.placeholderText;
-  // const years = range(1900, getYear(new Date()) + 1, 1);
 
 	return (
 		<DatePicker
